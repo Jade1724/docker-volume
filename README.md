@@ -32,3 +32,15 @@ The named volume can persist even if the container is removed.
 ```
 docker run -d -p 3000:80 --rm --name feedback-app -v feedback:/app/feedback feedback-node:volumes
 ```
+
+Removing anonymous volumes
+
+```
+docker volume rm VOL_NAME
+```
+
+Prune unused volumes
+
+```
+docker volume prune
+```

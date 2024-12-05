@@ -44,3 +44,15 @@ Prune unused volumes
 ```
 docker volume prune
 ```
+
+Using bind mount volumes
+
+```
+docker run -d -p 3000:80 --rm --name feedback-app -v feedback:/app/feedback -v "/Users/spark/Documents/Dev/DAE/Docker/data-volumes-01-starting-setup:/app" feedback-node:volumes
+```
+
+Look into logs in the container
+
+```
+docker logs feedback-app
+```

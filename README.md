@@ -68,3 +68,9 @@ Windows
 ```
 -v "%cd%":/app
 
+Attach anonymous volume to avoid overriding node_modules. 
+The app/node_modules path is more specific than app. So the node_modules folder will survive and can be accessed from the container. 
+
+```
+docker run -d -p 3000:80 --rm --name feedback-app -v feedback:/app/feedback -v "/Users/spark/Documents/Dev/DAE/Docker/data-volumes-01-starting-setup:/app" -v /app/node_modules feedback-node:volumes
+```

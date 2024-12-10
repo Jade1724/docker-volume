@@ -56,3 +56,15 @@ Look into logs in the container
 ```
 docker logs feedback-app
 ```
+
+Bind mounts shortcuts. These can replace the full absolute path specified in the command above. 
+
+macOS/Linux
+```
+-v $(pwd):/app
+```
+
+Windows
+```
+-v "%cd%":/app
+

@@ -23,6 +23,7 @@ app.get('/exists', (req, res) => {
 });
 
 app.post('/create', async (req, res) => {
+  console.log("creating feedback");
   const title = req.body.title;
   const content = req.body.text;
 

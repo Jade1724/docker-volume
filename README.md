@@ -82,9 +82,27 @@ Append `:ro` to the bind mount path.
 docker run -d -p 3000:80 --rm --name feedback-app -v feedback:/app/feedback -v "/Users/spark/Documents/Dev/DAE/Docker/data-volumes-01-starting-setup:/app:ro" -v /app/node_modules feedback-node:volumes
 ```
 
-However, we do want to write to `temp` folder so that we can save feedback. 
-Specify anonymous volume /app/temp so that it overrides bind mount and make it writable. 
+However, we do want to write to `temp` folder so that we can save feedback.
 
 ```
 docker run -d -p 3000:80 --rm --name feedback-app -v feedback:/app/feedback -v "/Users/spark/Documents/Dev/DAE/Docker/data-volumes-01-starting-setup:/app:ro" -v /app/temp -v /app/node_modules feedback-node:volumes
+```
+
+### Managing volumes
+
+List volumes
+
+```
+docker volume ls
+```
+
+All the volumes managed by Docker will be listed. 
+Named volume has a name we gave. Anonymous volume has a long alpha numeric characters name. 
+Bind mounts are managed by host machine's file system, not Docker, so they won't show up. 
+
+Create volume manually. Running docker run with named volume will automatically create a new volume. 
+Unless there is a strong reason to create it manually, it's not necessary. 
+
+```
+docker volume create feedback-files
 ```

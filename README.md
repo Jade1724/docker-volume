@@ -74,3 +74,17 @@ The app/node_modules path is more specific than app. So the node_modules folder 
 ```
 docker run -d -p 3000:80 --rm --name feedback-app -v feedback:/app/feedback -v "/Users/spark/Documents/Dev/DAE/Docker/data-volumes-01-starting-setup:/app" -v /app/node_modules feedback-node:volumes
 ```
+
+Make a Docker container cannot write to bind mounts by marking it read only. 
+Append `:ro` to the bind mount path. 
+
+```
+docker run -d -p 3000:80 --rm --name feedback-app -v feedback:/app/feedback -v "/Users/spark/Documents/Dev/DAE/Docker/data-volumes-01-starting-setup:/app:ro" -v /app/node_modules feedback-node:volumes
+```
+
+However, we do want to write to `temp` folder so that we can save feedback. 
+Specify anonymous volume /app/temp so that it overrides bind mount and make it writable. 
+
+```
+docker run -d -p 3000:80 --rm --name feedback-app -v feedback:/app/feedback -v "/Users/spark/Documents/Dev/DAE/Docker/data-volumes-01-starting-setup:/app:ro" -v /app/temp -v /app/node_modules feedback-node:volumes
+```
